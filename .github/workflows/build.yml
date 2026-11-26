@@ -28,15 +28,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flet
+          pip install flet google-generativeai requests
 
       - name: Build APK
         run: |
-          flet build apk --yes
+          flet build apk --module-name RANI_main --yes
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
-
+          path: build/apk/app-release.apk
